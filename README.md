@@ -64,5 +64,5 @@ for message in consumer:
         f"offset={message.offset}  "
         f"key={message.key}  value={message.value}"
     )
-    time.sleep(0.5)
+    time.sleep(5)
 ```

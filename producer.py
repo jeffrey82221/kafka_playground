@@ -10,14 +10,17 @@ producer = KafkaProducer(
     acks="all"            # wait for broker confirmation
 )
 
-topic = "demo-topic"
-
 for i in range(10):
     key = f"id-{i}"
     value = {"number": i, "text": f"hello-{i}"}
+    topic = "demo-topic"
     future = producer.send(topic, key=key, value=value)
     result = future.get(timeout=10)              # block until the broker acks
-    print(f"✔ sent {value} to partition {result.partition}, offset {result.offset}")
+    print(f"✔ sent {value} to {topic} partition {result.partition}, offset {result.offset}")
+    topic = "demo-topic-hi"
+    future = producer.send(topic, key=key, value=value)
+    result = future.get(timeout=10)              # block until the broker acks
+    print(f"✔ sent {value} to {topic} partition {result.partition}, offset {result.offset}")
     time.sleep(0.1)
 
 producer.flush()   # make sure all buffered records are written
