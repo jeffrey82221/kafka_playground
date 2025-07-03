@@ -1,2 +1,4 @@
 kafka-python
+celery
 celery[kafka]
+confluent-kafka
