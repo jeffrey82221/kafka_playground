@@ -1,3 +1,17 @@
+# How to solve priority queue problem? 
+
+
+1. Dispatcher using KQ approach to send job to Kafka and consumer the job via 
+    workers (there should be )
+    - [ ] There are high-priority queue and low-pririty queue
+            for sending high priority jobs and low priority jobs
+            (also high priority worker and low priority worker)
+    - [ ] The high priority job direclty using delay to start celery job.
+    - [ ] The low priority job will check whether the celery qeueu is full and decide 
+        whether to start the celery job. 
+
+
+
 # Image build
 
 ```bash
