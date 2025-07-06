@@ -4,3 +4,4 @@ celery[kafka]
 confluent-kafka
 kq
 requests
+icecream
