@@ -6,3 +6,4 @@ kq
 requests
 icecream
 flower
+celery[redis]
