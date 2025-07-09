@@ -2,7 +2,6 @@ from celery import Celery
 from kombu import Exchange, Queue
 
 import time
-# app = Celery('tasks', broker='kafka://localhost:9092')
 app = Celery('tasks', broker='amqp://guest:guest@localhost:5672//', 
              backend='rpc://')
 
