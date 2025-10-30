@@ -1,10 +1,11 @@
 from kafka import KafkaConsumer
 import json
+import time
 
 # Configuration for the Kafka consumer
 # Must match the producer's broker and topic
 KAFKA_BROKER = 'linyixundeMacBook-Air.local:8092'
-KAFKA_TOPIC = 'test-topic'
+KAFKA_TOPIC = 'test-topic2'
 CONSUMER_GROUP = 'internal-group'
 
 def create_consumer():
@@ -12,9 +13,9 @@ def create_consumer():
     consumer = KafkaConsumer(
         KAFKA_TOPIC,
         bootstrap_servers=[KAFKA_BROKER],
-        auto_offset_reset='earliest', # 'earliest',  # Start from the beginning if no offset exists
-        enable_auto_commit=True,       # Automatically commit offsets
-        # group_id=CONSUMER_GROUP,
+        auto_offset_reset='latest', # 'earliest',  # Start from the beginning if no offset exists
+        enable_auto_commit=False,       # Automatically commit offsets
+        group_id=CONSUMER_GROUP,
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
     )
     return consumer
@@ -35,7 +36,8 @@ def consume_messages(consumer):
             print(f"  Value: {message.value}")
             print(f"  Type of Value: {type(message.value)}")
             print("-" * 60)
-            
+            time.sleep(0.2)  # Simulate processing time
+            consumer.commit()  # Manually commit offset after processing
     except KeyboardInterrupt:
         print("\n\nConsumer stopped by user.")
     except Exception as e:

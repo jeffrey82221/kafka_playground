@@ -5,7 +5,7 @@ import time
 # Configuration for the Kafka producer
 # Replace 'localhost:9092' with your Kafka broker address(es) if different
 KAFKA_BROKER = 'linyixundeMacBook-Air.local:8092'
-KAFKA_TOPIC = 'test-topic'
+KAFKA_TOPIC = 'test-topic2'
 
 def create_producer():
     """Creates and returns a KafkaProducer instance."""
@@ -30,14 +30,14 @@ if __name__ == "__main__":
     producer = create_producer()
 
     # Send a few sample messages
-    for i in range(5):
+    for i in range(100):
         data = {
             'id': i,
             'message': f'Hello Kafka from Python! Message number {i}',
             'timestamp': time.time()
         }
         send_message(producer, KAFKA_TOPIC, data)
-        time.sleep(1) # Simulate some delay between messages
+        time.sleep(0.1) # Simulate some delay between messages
 
     # Ensure all messages are sent before closing the producer
     producer.flush()
