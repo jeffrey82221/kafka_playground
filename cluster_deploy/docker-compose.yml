@@ -1,6 +1,6 @@
 services:
   kafka1:
-    image: apache/kafka:latest
+    image: apache/kafka:3.9.1
     container_name: kafka1
     ports:
       - "9093:9093"
@@ -34,7 +34,7 @@ services:
       KAFKA_LOG_DIRS: /var/lib/kafka/data
 
   kafka2:
-    image: apache/kafka:latest
+    image: apache/kafka:3.9.1
     container_name: kafka2
     ports:
       - "9094:9093"
@@ -58,7 +58,7 @@ services:
       KAFKA_LOG_DIRS: /var/lib/kafka/data
 
   kafka3:
-    image: apache/kafka:latest
+    image: apache/kafka:3.9.1
     container_name: kafka3
     ports:
       - "9095:9093"
