@@ -20,7 +20,7 @@ services:
       # -> 所有通訊皆為 PLAINTEXT（明文，無加密/認證），適用於開發測試環境
       KAFKA_LISTENERS: CONTROLLER://:9092,EXTERNAL://0.0.0.0:9093,INTERNAL://:29092
       # -> Broker 真正監聽的網絡接口和端口
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:29092,EXTERNAL://localhost:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:29092,EXTERNAL://localhost:9093,CONTROLLER://kafka1:9092
       # -> Broker 告訴客戶端（Producer/Consumer）應該透過哪個地址連接
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       # -> 指定 Broker 之間通訊使用的監聽器名稱（內部 Docker 網絡）
